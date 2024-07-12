@@ -2,6 +2,7 @@ import React from 'react';
 
 import Profile from './compontent/Profile/Profile';
 import Counter from './compontent/Counter/Counter';
+import Todo from './compontent/Todo/Todo';
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
     bio='Software Engineer'/>  
    </>*/
    <>
-   <Counter />
+  / <Todo />
    </>
   );
 }
