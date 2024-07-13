@@ -1,22 +1,17 @@
 import React from 'react';
-
-import Profile from './compontent/Profile/Profile';
-import Counter from './compontent/Counter/Counter';
-//mport Todo from './compontent/Todo/Todo';
-//import Login from './compontent/Login/Login';
-//import UserList from './compontent/UserList/UserList';
-import ContactForm from './compontent/ContactForm/ContactForm';
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Home from './compontent/Router/Home/Home';
+import About from './compontent/Router/About/About';
 function App() {
   return (
- /* 1. <>
-   <Profile name='Satyam'
-    age='23' 
-    bio='Software Engineer'/>  
-   </>*/
-   <>
-  <ContactForm />
-   </>
+    <>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/about' element={<About />} />
+        </Routes>
+      </Router>
+    </>
   );
 }
 
