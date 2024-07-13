@@ -27,6 +27,7 @@ function Todo() {
       value={item}
       onChange={(e)=>setItem(e.target.value)}
       />
+      <p>Total items: {items.length}</p>
       <button onClick={add}>Add items</button>
       <ul>
       {items.map((item, index) => (
