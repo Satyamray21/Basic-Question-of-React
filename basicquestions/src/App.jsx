@@ -3,7 +3,8 @@ import React from 'react';
 import Profile from './compontent/Profile/Profile';
 import Counter from './compontent/Counter/Counter';
 //mport Todo from './compontent/Todo/Todo';
-import Login from './compontent/Login/Login';
+//import Login from './compontent/Login/Login';
+import UserList from './compontent/UserList/UserList';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
     bio='Software Engineer'/>  
    </>*/
    <>
-  <Login />
+  <UserList />
    </>
   );
 }
