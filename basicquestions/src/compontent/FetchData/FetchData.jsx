@@ -1,34 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
 
-function FetchData() {
-    const[data,setData]=useState(null);
-    useEffect((()=>
-    {
-        setTimeout(()=>{
-            fetch(`https://api.github.com/users/Satyamray21`)
-        .then(res=>res.json())
-        .then(data=>setData(data))
-        .catch(error => console.error('Error fetching data:', error));
-        },5000)
-        
-    }),[])
+const FetchData = () => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    return (
-        <div>
-            {data ? (
-                <div>
-                    <h1>Name:{data.name}</h1>
-                    <p>{data.bio}</p>
-                    <p>{data.id}</p>
-                    <p>{data.followers}</p>
-                    <img src={data.avatar_url} alt={`${data.name}'s avatar`} width={100} />
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
-    );
-}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('https://api.github.com/users/Satyamray21');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const result = await response.json();
+        setData(result);
+      } catch (error) {
+        setError(error);
+      } finally {
+        setLoading(false);
+      }
+    };
 
+    fetchData();
+  }, []);
 
-export default FetchData
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+
+  return (
+    <div>
+      <h1>Fetched Data</h1>
+      <ul>
+        {data && (
+          <>
+            <li><strong>ID:</strong> {data.id}</li>
+            <li><strong>Login:</strong> {data.login}</li>
+            <li><strong>Name:</strong> {data.name}</li>
+            <li><strong>Public Repos:</strong> {data.public_repos}</li>
+            <li><strong>Followers:</strong> {data.followers}</li>
+            <li><strong>Following:</strong> {data.following}</li>
+            <li><strong>Avatar:</strong> <img src={data.avatar_url} alt="avatar" width="50" /></li>
+          </>
+        )}
+      </ul>
+    </div>
+  );
+};
+
+export default FetchData;

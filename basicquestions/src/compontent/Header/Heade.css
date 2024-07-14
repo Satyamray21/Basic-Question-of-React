@@ -1,0 +1,15 @@
+.nav-container {
+    display: flex;
+    gap: 15px; /* Adjust the value as needed */
+  }
+  
+  .nav-link {
+    text-decoration: none; /* Remove underline */
+    color: black; /* Set link color */
+  }
+  
+  .nav-link.active-link {
+    font-weight: bold; /* Style for active link */
+    background-color: blue; /* Change color for active link */
+  }
+  
