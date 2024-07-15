@@ -5,19 +5,16 @@ import Home from './compontent/Home/Home';
 import ContactForm from './compontent/ContactForm/ContactForm';
 import Login from './compontent/Login/Login';
 import FetchData from './compontent/FetchData/FetchData';
+import UserContext from './context/UserContext';
+import UserContextProvider from './context/UserContextProvider';
+import Profile from './compontent/Profile/Profile';
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<ContactForm />} />
-          <Route path="github" element={<FetchData />} />
-          <Route path="login" element={<Login/>} />
-        </Route>
-      </Routes>
-    </Router>
+   <UserContextProvider>
+    <Login />
+    <Profile />
+   </UserContextProvider>
   );
 }
 

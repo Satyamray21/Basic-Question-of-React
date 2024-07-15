@@ -1,29 +1,21 @@
-import React, { useState } from 'react'
-
+import React, { useContext, useState } from 'react'
+import UserContext from '../../context/UserContext';
 function Login() {
     const[username,setUsername]=useState('');
     const[password,setPassword]=useState('');
     const[isLoggedIn,setIsLoggedIn]=useState(false);
+    const {setUser} = useContext(UserContext)
     const manage = (e)=>{
         e.preventDefault();
-        if(username !== '' && password !== '')
-        {
-            setIsLoggedIn(true);
-        }
-        else
-        {
-            setIsLoggedIn(false);
-            setPassword('');
-            setUsername('');
-        }
+        setUser({username,password})
+        setUsername('');
+        setPassword('');
     }
   return (
     <>
-    {isLoggedIn?(
-        <p>Welcome {username}!</p>
-    ):(
+    
         
-        <form onSubmit={manage}>
+        <form >
         <input type='text'
         placeholder='Enter your name'
         value={username}
@@ -38,10 +30,10 @@ function Login() {
         />
         <br/>
         <br/>
-        <button>Submit</button>
+        <button onClick={manage}>Submit</button>
         </form>
-    )
-    }
+    
+    
     </>
     
     
